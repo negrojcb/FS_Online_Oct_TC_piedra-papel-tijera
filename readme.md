@@ -12,13 +12,11 @@ En este ejercicio, crearemos un juego de "Piedra, Papel o Tijera" utilizando HTM
 
 4. Actualiza el contador de puntos para el usuario y el ordenador según el resultado.
 
-5. Muestra el resultado en el HTML utilizando `textContent` o `innerHTML`en el div `resultados` 
+5. Muestra el resultado en el HTML utilizando `textContent` o `innerHTML`en el div `resultados`
 
+6. Esto ya está creado: Botones para "Piedra," "Papel" y "Tijera," un área de resultados (`resultados`) y un contador de puntos para el usuario y el ordendador.
 
-
-1. Esto ya está creado: Botones para "Piedra," "Papel" y "Tijera," un área de resultados (`resultados`) y un contador de puntos para el usuario y el ordendador.
-
-2. Crea un archivo CSS para dar estilo a los elementos HTML y asegurarte de que el juego se vea atractivo. Ya tiene unos secillos para que puedas trabajar.
+7. Crea un archivo CSS para dar estilo a los elementos HTML y asegurarte de que el juego se vea atractivo. Ya tiene unos secillos para que puedas trabajar.
 
 ## Consejos
 

@@ -1,28 +1,50 @@
-const piedra = document.querySelector('button[data-jugada="0"]');
-const papel = document.querySelector('button[data-jugada="1"]');
-const tijera = document.querySelector('button[data-jugada="2"]');
-const puntoUsusario = 0;
-const puntoOrdenador = 0;
-const resultados = document.getElementById("resultados");
+let puntoUsusario = 0;
+let puntoOrdenador = 0;
+const botones = document.querySelectorAll("button[data-jugada]");
+const resultadosDisplay = document.getElementById("resultados");
 const contadorUsuario = document.getElementById("contador-usuario");
-const contadorOrdenador = document.getElementById("contador-Ordenador");
+const contadorOrdenador = document.getElementById("contador-ordenador");
 
-const opciones = [piedra, papel, tijera];
-console.log(opciones);
+const opciones = ["Piedra", "Papel", "Tijera"];
 
-function jugada() {
-  opciones.forEach((element) =>
-    element.addEventListener("click", function () {
-      const jugadaUsuario = element.dataset.jugada;
-      const juagadaordenador = Math.floor(Math.random() * 3);
-      if (jugadaUsuario > juagadaordenador) {
-        console.log("Ganaste");
-      } else if (jugadaUsuario < juagadaordenador) {
-        console.log("Perdiste");
-      } else {
-        console.log("Empate");
-      }
-    })
-  );
+function juagadaOrdenador() {
+  const random = Math.floor(Math.random() * 3);
+  return opciones[random];
 }
-jugada();
+
+function obtenerResultado(usuario, ordenador) {
+  if (usuario === ordenador) {
+    return "Empate";
+  } else if (
+    (usuario === "Piedra" && ordenador === "Tijera") ||
+    (usuario === "Papel" && ordenador === "Piedra") ||
+    (usuario === "Tijera" && ordenador === "Papel")
+  ) {
+    return "Ganaste";
+  } else {
+    return "Perdiste";
+  }
+}
+
+function actulizarPuntos(resultado) {
+  if (resultado === "Ganaste") {
+    resultadosDisplay.textContent = "GANASTE";
+    puntoUsusario++;
+    contadorUsuario.innerHTML = `${puntoUsusario}`;
+  } else if (resultado === "Perdiste") {
+    resultadosDisplay.textContent = "PERDISTE";
+    puntoOrdenador++;
+    contadorOrdenador.innerHTML = `${puntoOrdenador}`;
+  } else {
+    resultadosDisplay.textContent = "EMPATE";
+  }
+}
+
+botones.forEach((boton) =>
+  boton.addEventListener("click", () => {
+    const jugadaUsuario = boton.dataset.jugada;
+    const jugadaPc = juagadaOrdenador();
+    const resultado = obtenerResultado(jugadaUsuario, jugadaPc);
+    actulizarPuntos(resultado);
+  })
+);
